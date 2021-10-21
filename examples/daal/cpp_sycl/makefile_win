@@ -24,7 +24,7 @@ help:
 	@echo
 	@echo "name              - example name."
 	@echo
-	@echo "compiler_name     - the only supported compiler is clang (default value)"
+	@echo "compiler_name     - the only supported compiler is dpcpp (default value)"
 	@echo "                    Intel(R) oneAPI DPC++ compiler"
 	@echo
 	@echo "mode_name         - can be build or run. Default is run."
@@ -40,7 +40,7 @@ help:
 ##                                                 and run kmeans_dense_batch example for 64-bit
 ##                                                 applications, dynamic linking
 ##
-## nmake dll compiler=clang                      - build by Intel(R) oneAPI Compiler (as default)
+## nmake dll compiler=dpcpp                      - build by Intel(R) oneAPI Compiler (as default)
 ##                                                 and run all examples of Intel(R) oneDAL for
 ##                                                 64-bit applications, dynamic linking
 ##
@@ -63,7 +63,7 @@ example = $(EXAMPLES_LIST)
 !ENDIF
 
 !IFNDEF compiler
-compiler = clang
+compiler = dpcpp
 !ENDIF
 
 !IFNDEF mode
@@ -88,7 +88,7 @@ RES = $(example:+=.exe)
 RES = $(example:+=.res)
 !ENDIF
 
-!IF ("$(compiler)"=="clang")
+!IF ("$(compiler)"=="dpcpp")
 CC=dpcpp
 COPTS= /EHs -fsycl-device-code-split=per_kernel
 OUT_OPTS=/Fe$(RES_DIR)

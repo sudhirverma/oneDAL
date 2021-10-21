@@ -187,12 +187,22 @@ Dynamic linking, Multi-threaded |short_name|:
 
 .. code-block:: text
 
+<<<<<<< HEAD
      dpcpp my_first_dal_program.cpp -Wl,
      --start-group -L<install dir>/dal/latest/lib/intel64 -lonedal_core -lonedal_dpc -lonedal_thread -lpthread -ldl -lOpenCL -L<install dir>/tbb/latest/lib/intel64/gcc4.8 -ltbb -ltbbmalloc <install dir>/dal/latest/lib/intel64/libonedal_sycl.a -Wl,--end-group
+=======
+     dpcpp -fsycl -DONEAPI_DAAL_USE_MKL_GPU_GEMM my_first_daal_program.cpp -Wl,
+     --start-group -L<install dir>/daal/latest/lib/intel64 -lonedal_core -lonedal_thread.so -lpthread -ldl -lOpenCL -L<install dir>/tbb/latest/lib/intel64/gcc4.8 -ltbb -ltbbmalloc -foffload-static-lib=<install dir>/daal/latest/lib/intel64/libonedal_sycl.a -Wl,--end-group
+>>>>>>> Intel clang is replaced by dpcpp
 
 Static linking, Single-threaded |short_name|:
 
 .. code-block:: text
 
+<<<<<<< HEAD
      dpcpp my_first_dal_program.cpp -Wl,
      --start-group <install dir>/dal/latest/lib/intel64/libonedal_core.a <install dir>/dal/latest/lib/intel64/libonedal_dpc.a <install dir>/dal/latest/lib/intel64/libonedal_sequential.a -lpthread -ldl -lOpenCL <install dir>/dal/latest/lib/intel64/libonedal_sycl.a -Wl,--end-group
+=======
+     dpcpp -fsycl -DONEAPI_DAAL_USE_MKL_GPU_GEMM my_first_daal_program.cpp -Wl,
+     --start-group <install dir>/daal/latest/lib/intel64/libonedal_core.a <install dir>/daal/latest/lib/intel64/libonedal_sequential.a -lpthread -ldl -lOpenCL -foffload-static-lib=<install dir>/daal/latest/lib/intel64/libonedal_sycl.a -Wl,--end-group
+>>>>>>> Intel clang is replaced by dpcpp
