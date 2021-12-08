@@ -18,32 +18,31 @@
 #  Intel compiler defenitions for makefile
 #--
 
-PLATs.icx = lnx32e
+PLATs.icpx = lnx32e
 
-CMPLRDIRSUFF.icx = _icx
+CMPLRDIRSUFF.icpx = _icpx
 
-CORE.SERV.COMPILER.icx = generic
+CORE.SERV.COMPILER.icpx = generic
 
--Zl.icx =
--DEBC.icx = -g
--Qopt = -qopt-
+-Zl.icpx =
+-DEBC.icpx = -g
 
-COMPILER.lnx.icx = icpx $(if $(IA_is_ia32),-m32,-m64) -qopenmp-simd -stdlib=libstdc++ -fwrapv \
-                    -Werror -Wreturn-type
+COMPILER.lnx.icpx = icpx $(if $(IA_is_ia32),-m32,-m64) \
+                     -Werror -Wreturn-type
 
-link.dynamic.lnx.icx = icpx $(if $(IA_is_ia32),-m32,-m64)
 
-pedantic.opts.lnx.icx = -pedantic \
-                        -Wall \
-                        -Wextra \
-                        -Wno-unused-parameter
+link.dynamic.lnx.icpx = icpx $(if $(IA_is_ia32),-m32,-m64)
 
-daaldep.lnx32e.rt.icx = -static-intel
-daaldep.lnx32.rt.icx  = -static-intel
+pedantic.opts.icpx = -pedantic \
+                      -Wall \
+                      -Wextra \
+                      -Wno-unused-parameter
 
-p4_OPT.icx   = -march=nocona
-mc_OPT.icx   = -march=core2
-mc3_OPT.icx  = -march=nehalem
-avx_OPT.icx  = -march=sandybridge
-avx2_OPT.icx = -march=haswell
-skx_OPT.icx  = -march=skx
+pedantic.opts.lnx.icpx = $(pedantic.opts.icpx)
+
+p4_OPT.icpx   = $(-Q)march=nocona
+mc_OPT.icpx   = $(-Q)march=core2
+mc3_OPT.icpx  = $(-Q)march=nehalem
+avx_OPT.icpx  = $(-Q)march=sandybridge
+avx2_OPT.icpx = $(-Q)march=haswell
+skx_OPT.icpx  = $(-Q)march=skx
