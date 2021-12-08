@@ -20,7 +20,7 @@
 
 PLATs.icx = lnx32e
 
-CMPLRDIRSUFF.icx = 
+CMPLRDIRSUFF.icx = _icx
 
 CORE.SERV.COMPILER.icx = generic
 
@@ -28,7 +28,7 @@ CORE.SERV.COMPILER.icx = generic
 -DEBC.icx = -g
 -Qopt = -qopt-
 
-COMPILER.lnx.icx = icpx $(if $(IA_is_ia32),-m32,-m64) -qopenmp-simd -stdlib=libstdc++ -fgnu-runtime -fwrapv \
+COMPILER.lnx.icx = icpx $(if $(IA_is_ia32),-m32,-m64) -qopenmp-simd -stdlib=libstdc++ -fwrapv \
                     -Werror -Wreturn-type
 
 link.dynamic.lnx.icx = icpx $(if $(IA_is_ia32),-m32,-m64)
