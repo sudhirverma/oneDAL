@@ -20,32 +20,25 @@
 
 PLATs.icx = lnx32e
 
-CMPLRDIRSUFF.icx =
+CMPLRDIRSUFF.icx = _icx
 
 CORE.SERV.COMPILER.icx = generic
--DEBC.icx = -g
 
 -Zl.icx =
--Qopt = -qopt-
+-DEBC.icx = -g
 
-COMPILER.lnx.icx  = $(if $(COVFILE),cov01 -1; covc -i )icx -qopenmp-simd \
-                    -Werror -Wreturn-type
-COMPILER.lnx.icx += icx -m64 -Werror -Wreturn-type
-
+COMPILER.lnx.icx = icx -m64 -Werror -Wreturn-type
 
 link.dynamic.lnx.icx = icx -m64
 
-pedantic.opts.lnx.icx = -pedantic \
-                        -Wall \
-                        -Wextra \
-                        -Wno-unused-parameter
-
-daaldep.lnx32e.rt.icx = -static-intel
+pedantic.opts.icx.icx = -pedantic \
+                      -Wall \
+                      -Wextra \
+                      -Wno-unused-parameter
 
 p4_OPT.icx   = -march=nocona
 mc_OPT.icx   = -march=core2
 mc3_OPT.icx  = -march=nehalem
 avx_OPT.icx  = -march=sandybridge
 avx2_OPT.icx = -march=haswell
-knl_OPT.icx  = -march=knl
 skx_OPT.icx  = -march=skx
