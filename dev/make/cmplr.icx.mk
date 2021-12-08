@@ -20,21 +20,26 @@
 
 PLATs.icx = lnx32e
 
-CMPLRDIRSUFF.icx = _icx
+CMPLRDIRSUFF.icx = 
 
 CORE.SERV.COMPILER.icx = generic
 
 -Zl.icx =
 -DEBC.icx = -g
+-Qopt = -qopt-
 
-COMPILER.lnx.icx = icx -m64 -Werror -Wreturn-type
+COMPILER.lnx.icx = icpx $(if $(IA_is_ia32),-m32,-m64) -qopenmp-simd -stdlib=libstdc++ -fgnu-runtime -fwrapv \
+                    -Werror -Wreturn-type
 
-link.dynamic.lnx.icx = icx -m64
+link.dynamic.lnx.icx = icpx $(if $(IA_is_ia32),-m32,-m64)
 
-pedantic.opts.icx.icx = -pedantic \
-                      -Wall \
-                      -Wextra \
-                      -Wno-unused-parameter
+pedantic.opts.lnx.icx = -pedantic \
+                        -Wall \
+                        -Wextra \
+                        -Wno-unused-parameter
+
+daaldep.lnx32e.rt.icx = -static-intel
+daaldep.lnx32.rt.icx  = -static-intel
 
 p4_OPT.icx   = -march=nocona
 mc_OPT.icx   = -march=core2
