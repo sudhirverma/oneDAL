@@ -23,14 +23,14 @@ PLATs.icx = lnx32e
 CMPLRDIRSUFF.icx =
 
 CORE.SERV.COMPILER.icx = generic
--DEBC.icx = $(if $(OS_is_win),-debug:all -Z7,-g)
+-DEBC.icx = -g
 
 -Zl.icx =
--Qopt = $(if $(OS_is_win),-Qopt-,-qopt-)
+-Qopt = -qopt-
 
 COMPILER.lnx.icx  = $(if $(COVFILE),cov01 -1; covc -i )icx -qopenmp-simd \
                     -Werror -Wreturn-type
-COMPILER.lnx.icx += clang++ $(if $(IA_is_ia32),-m32,-m64) -Werror -Wreturn-type
+COMPILER.lnx.icx += icx -m64 -Werror -Wreturn-type
 
 
 link.dynamic.lnx.icx = icx -m64
