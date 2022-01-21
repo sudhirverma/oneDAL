@@ -24,7 +24,7 @@ CMPLRDIRSUFF.icx = _icx
 
 CORE.SERV.COMPILER.icx = generic
 
--Zl.icx =
+-Zl.icx =  -mGLOB_freestanding=TRUE -mCG_no_libirc=TRUE
 -DEBC.icx = -g
 
 COMPILER.lnx.icx = icpx $(if $(IA_is_ia32),-m32,-m64) \
