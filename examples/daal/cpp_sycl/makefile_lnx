@@ -57,6 +57,10 @@ ifndef example
     example = $(DAAL)
 endif
 
+ifndef compiler
+    compiler = dpcpp
+endif
+
 ifneq ($(compiler),dpcpp)
     override compiler = dpcpp
 endif
