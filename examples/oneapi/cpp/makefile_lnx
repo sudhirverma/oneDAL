@@ -25,7 +25,7 @@ help:
 	@echo
 	@echo "name              - example name. Please see onedal.lst file"
 	@echo
-	@echo "compiler_name     - can be intel, gnu, dpcpp or icx. Default value is intel."
+	@echo "compiler_name     - can be intel, dpcpp, icx or gnu. Default value is intel."
 	@echo
 	@echo "threading_name    - can be parallel or sequential. Default value is parallel."
 	@echo
@@ -57,6 +57,10 @@ include onedal.lst
 
 ifndef example
     example = $(ONEDAL)
+endif
+
+ifeq ($(compiler),clang)
+    override compiler = dpcpp
 endif
 
 ifneq ($(compiler),gnu)

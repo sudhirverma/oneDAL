@@ -25,7 +25,7 @@ help:
 	@echo "name              - example name. Please see daal.lst file."
 	@echo
 	@echo "compiler_name     - the only supported compiler is dpcpp (default value)"
-	@echo "                    Intel(R) oneAPI DPC++ compiler"
+	@echo "                    Intel(R) oneAPI DPC++/C++ Compiler"
 	@echo "mode_name         - can be build or run. Default is run"
 
 ##------------------------------------------------------------------------------
@@ -39,11 +39,11 @@ help:
 ##                                 of Intel(R) oneDAL for
 ##                                 64-bit applications, dynamic linking
 ##
-## make sointel64                - build by Intel(R) oneAPI Compiler (as default)
+## make sointel64                - build by Intel(R) oneAPI DPC++/C++ Compiler (as default)
 ##                                 and run all examples for Intel(R)64 processor
 ##                                 family  applications, dynamic linking
 ##
-## make sointel64 mode=build     - build only (not run) by Intel(R) oneAPI Compiler
+## make sointel64 mode=build     - build only (not run) by Intel(R) oneAPI DPC++/C++ Compiler
 ##                                 (as default) all examples for Intel(R)64
 ##                                 processor family  applications, dynamic linking
 ##
@@ -57,8 +57,8 @@ ifndef example
     example = $(DAAL)
 endif
 
-ifndef compiler
-    compiler = dpcpp
+ifneq ($(compiler),dpcpp)
+    override compiler = dpcpp
 endif
 
 ifneq ($(mode),build)

@@ -28,7 +28,7 @@ help:
 	@echo "compiler_name     - can be gnu, clang, or intel. Default value is intel."
 	@echo "                    Intel(R) C Compiler as default."
 	@echo "                    If compiler=gnu then GNU C compiler will be used."
-	@echo "                    If compiler=clang then Intel Clang C compiler will be used."
+	@echo "                    If compiler=clang then Clang C compiler will be used."
 	@echo
 	@echo "threading_name    - can be parallel or sequential. Default value is parallel."
 	@echo
