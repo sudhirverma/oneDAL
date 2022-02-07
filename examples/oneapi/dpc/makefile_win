@@ -54,6 +54,10 @@ help:
 example = $(EXAMPLES_LIST)
 !ENDIF
 
+!IF ("$(compiler)"!="dpcpp")
+compiler = dpcpp
+!ENDIF
+
 !IFNDEF mode
 mode = run
 !ENDIF
