@@ -52,19 +52,21 @@ jobs:
         # Details on CodeQL's query packs refer to : https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
         # queries: security-extended,security-and-quality
 
+    - name: Install Dependency
+      run: |
+        sudo apt-get update && sudo apt-get install -y gcc-multilib g++-multilib dos2unix tree
+        conda create -n ci-env -q -y -c intel -c conda-forge impi-devel=2021.7.1 openjdk=17.0.3
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Build
       run: |
-        sudo apt-get update && sudo apt-get install -y gcc-multilib g++-multilib dos2unix tree
-        conda create -n ci-env -q -y -c intel -c conda-forge impi-devel=2021.7.1 openjdk=17.0.3
         export JAVA_HOME=/usr/jdk/jdk1.6.0_02
         export PATH=$JAVA_HOME/bin:$PATH
         export CPATH=$JAVA_HOME/include:$JAVA_HOME/include/linux:$CPATH
         ./dev/download_micromkl.sh
         ./dev/download_tbb.sh
-        make -f makefile daal PLAT=lnx32e
+        make -f makefile daal oneapi_c PLAT=lnx32e COMPILER=gnu
          
 
     # ℹ️ Command-line programs to run using the OS shell.
