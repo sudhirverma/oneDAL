@@ -61,7 +61,6 @@ jobs:
         export PATH=$JAVA_HOME/bin:$PATH
         export CPATH=$JAVA_HOME/include:$JAVA_HOME/include/linux:$CPATH
         ./dev/download_micromkl.sh
-        source /opt/intel/oneapi/tbb/latest/env/vars.sh intel64
         make -f makefile daal PLAT=lnx32e
          
 
