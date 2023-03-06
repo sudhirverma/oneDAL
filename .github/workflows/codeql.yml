@@ -57,10 +57,13 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Build
       run: |
+        sudo apt-get update && sudo apt-get install -y gcc-multilib g++-multilib dos2unix tree
+        conda create -n ci-env -q -y -c intel -c conda-forge impi-devel=2021.7.1 openjdk=17.0.3
         export JAVA_HOME=/usr/jdk/jdk1.6.0_02
         export PATH=$JAVA_HOME/bin:$PATH
         export CPATH=$JAVA_HOME/include:$JAVA_HOME/include/linux:$CPATH
         ./dev/download_micromkl.sh
+        ./dev/download_tbb.sh
         make -f makefile daal PLAT=lnx32e
          
 
