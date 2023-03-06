@@ -55,8 +55,17 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    - name: Build
+      run: |
+        source /opt/intel/compilers_and_libraries/linux/bin/compilervars.sh intel64
+        source /opt/intel/oneapi/compiler/latest/env/vars.sh
+        export JAVA_HOME=/usr/jdk/jdk1.6.0_02
+        export PATH=$JAVA_HOME/bin:$PATH
+        export CPATH=$JAVA_HOME/include:$JAVA_HOME/include/linux:$CPATH
+        ./dev/download_micromkl.sh
+        source /opt/intel/oneapi/tbb/latest/env/vars.sh intel64
+        make -f makefile daal PLAT=lnx32e
+         
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
