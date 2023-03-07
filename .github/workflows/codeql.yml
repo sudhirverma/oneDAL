@@ -61,10 +61,12 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Build
       run: |
-        export JAVA_HOME=/usr/jdk/jdk1.6.0_02
-        export PATH=$JAVA_HOME/bin:$PATH
-        export CPATH=$JAVA_HOME/include:$JAVA_HOME/include/linux:$CPATH
-        mkdir -p build && cd build && cmake ..
+          export JAVA_HOME=/usr/jdk/jdk1.6.0_02
+          export PATH=$JAVA_HOME/bin:$PATH
+          export CPATH=$JAVA_HOME/include:$JAVA_HOME/include/linux:$CPATH
+          ./dev/download_micromkl.sh
+          ./dev/download_tbb.sh
+          make -f makefile daal PLAT=lnx32e     
          
 
     # ℹ️ Command-line programs to run using the OS shell.
