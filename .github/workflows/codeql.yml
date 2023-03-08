@@ -56,6 +56,9 @@ jobs:
       run: |
         sudo apt-get update && sudo apt-get install -y gcc-multilib g++-multilib dos2unix tree
         conda create -n ci-env -q -y -c intel -c conda-forge impi-devel=2021.7.1 openjdk=17.0.3
+    
+    - name: Install Intel® oneAPI DPC++/C++ Compiler
+      run: $CONDA/bin/conda install -c intel dpcpp_linux-64
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
