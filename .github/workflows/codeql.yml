@@ -63,6 +63,7 @@ jobs:
       run: |
           ./dev/download_micromkl.sh
           ./dev/download_tbb.sh
+          make -f makefile daal PLAT=lnx32e
          
 
     # ℹ️ Command-line programs to run using the OS shell.
